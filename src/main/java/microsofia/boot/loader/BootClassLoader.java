@@ -134,10 +134,7 @@ public class BootClassLoader extends ClassLoader {
 				return clazz;
 			}
 		}
-		if (clazz == null) {
-			throw new ClassNotFoundException(classVisitor.getName());
-		}
-		return clazz;
+		throw new ClassNotFoundException(classVisitor.getName());
 	}
 
 	/**
