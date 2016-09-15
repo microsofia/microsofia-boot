@@ -17,6 +17,7 @@ import microsofia.boot.config.Settings;
  * */
 public abstract class AbstractLauncher {
 	private File settingsFile;
+	protected Settings settings;
 
 	protected AbstractLauncher(){
 	}
@@ -33,7 +34,7 @@ public abstract class AbstractLauncher {
 		if (settingsFile==null){
 			settingsFile=new File(".\\settings.xml");
 		}
-		Settings settings=Settings.readFrom(new FileInputStream(settingsFile));
+		settings=Settings.readFrom(new FileInputStream(settingsFile));
 		
 		RepositorySystem repositorySystem=new RepositorySystemBuilder().create();
 		RepositorySystemSession session=new RepositorySystemSessionBuilder().setSettings(settings).setRepositorySystem(repositorySystem).create();

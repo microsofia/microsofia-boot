@@ -3,6 +3,7 @@ package microsofia.boot.launch;
 import java.lang.reflect.Method;
 
 import org.eclipse.aether.resolution.DependencyResult;
+import org.w3c.dom.Element;
 
 import microsofia.boot.loader.ClassLoaderBuilder;
 
@@ -37,7 +38,18 @@ public class MainLauncher extends AbstractLauncher{
 		
 		ClassLoader classLoader=new ClassLoaderBuilder().setParentClassLoader(MainLauncher.class.getClassLoader()).setRootNode(result.getRoot()).create();
 		Class<?> cl=classLoader.loadClass(mainClass);
-		Method m=cl.getMethod("main", String[].class);
-		m.invoke(null, (Object)args);
+		
+		Method mainWithDom=null;
+		Method main=null;
+		try{
+			mainWithDom=cl.getMethod("main", String[].class,Element[].class);
+		}catch(Exception e){
+			main=cl.getMethod("main", String[].class);
+		}
+		if (main!=null){
+			main.invoke(null, (Object)args);
+		}else{
+			mainWithDom.invoke(null, (Object)args, settings.getElement());
+		}
 	}
 }

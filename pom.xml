@@ -5,7 +5,7 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>microsofia</groupId>
-	<artifactId>boot</artifactId>
+	<artifactId>microsofia-boot</artifactId>
 	<version>1.0</version>
 
 	<properties>
@@ -38,6 +38,9 @@
 		                <relocation>
 		                  <pattern>org</pattern>
 		                  <shadedPattern>microsofia.org</shadedPattern>
+		                  <excludes>
+		                  	<exclude>org.w3c.*</exclude>
+		                  </excludes>
 		                </relocation>
 		                <relocation>
 		                  <pattern>com</pattern>

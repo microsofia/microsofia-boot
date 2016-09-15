@@ -13,6 +13,7 @@ import javax.xml.bind.annotation.*;
 
 import org.eclipse.aether.repository.Proxy;
 import org.eclipse.aether.repository.RemoteRepository;
+import org.w3c.dom.Element;
 
 /**
  * Settings of the Aether session, which looks like the
@@ -94,6 +95,8 @@ public class Settings{
 	@XmlElementWrapper(name="repositories")
 	@XmlElement(name="repository")
 	private List<RepositoryConfig> repositories;
+	@XmlAnyElement
+	private Element[] element;
 
 	public Settings(){
 		proxies=new ArrayList<>();
@@ -155,6 +158,14 @@ public class Settings{
 
 	public void setRepositories(List<RepositoryConfig> repositories) {
 		this.repositories = repositories;
+	}
+	
+	public Element[] getElement(){
+		return element;
+	}
+	
+	public void setElement(Element[] element){
+		this.element=element;
 	}
 	
 	public void writeTo(OutputStream out) throws Exception{
