@@ -12,6 +12,9 @@ import microsofia.boot.aether.RepositorySystemBuilder;
 import microsofia.boot.aether.RepositorySystemSessionBuilder;
 import microsofia.boot.config.Settings;
 
+/**
+ * Base abstract class which resolves the dependency graph node.
+ * */
 public abstract class AbstractLauncher {
 	private File settingsFile;
 

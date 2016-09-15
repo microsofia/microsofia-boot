@@ -4,6 +4,9 @@ import org.eclipse.aether.resolution.DependencyResult;
 
 import microsofia.boot.aether.ConsoleDependencyVisitor;
 
+/**
+ * Used to dump the created Aether graph node.
+ * */
 public class GraphDumper extends AbstractLauncher{
 
 	public GraphDumper(){

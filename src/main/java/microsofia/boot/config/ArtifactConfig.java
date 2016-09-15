@@ -27,7 +27,7 @@ public class ArtifactConfig {
 	private String classifier;
 	@XmlElement
 	private String extension;
-    @XmlJavaTypeAdapter(PropertyConfig.PropertiesAdapters.class)
+    @XmlJavaTypeAdapter(PropertiesConfig.PropertiesAdapters.class)
 	private Map<String, String> properties;
 
     public ArtifactConfig(){

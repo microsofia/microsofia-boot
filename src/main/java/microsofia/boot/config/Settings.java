@@ -15,14 +15,14 @@ import org.eclipse.aether.repository.Proxy;
 import org.eclipse.aether.repository.RemoteRepository;
 
 /**
- * Settings of the Aether session, which looks a lot like the
+ * Settings of the Aether session, which looks like the
  * <a href="https://maven.apache.org/settings.html">Maven settings file</a>.
  * <br />
  * Example: <br />
  * <br />
 <pre>
 	&lt;settings>
-	  &lt;!-- Path to the local repository that will created and updated -->
+	  &lt;!-- Path to the local repository that will be created and updated -->
 	  &lt;localRepository>d:\.m2&lt;/localRepository>
 	  
 	  &lt;!-- 
@@ -98,6 +98,7 @@ public class Settings{
 	public Settings(){
 		proxies=new ArrayList<>();
 		mirrors=new ArrayList<>();
+		repositories=new ArrayList<>();
 	}
 
 	public String getLocalRepository() {

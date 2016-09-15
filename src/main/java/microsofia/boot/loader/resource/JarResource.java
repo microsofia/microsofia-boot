@@ -26,6 +26,10 @@ public class JarResource extends FileResource {
 	public JarResource(File file) {
 		super(file);
 	}
+	
+	protected void finalize() throws Throwable {
+		close();
+	}
 
 	public synchronized ZipFile getZipFile() {
 	    if (zipFile==null){

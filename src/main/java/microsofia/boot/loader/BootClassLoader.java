@@ -142,8 +142,7 @@ public class BootClassLoader extends ClassLoader {
 	 * */
 	@Override
 	protected URL findResource(String name) {
-		ResourceVisitor resourceVisitor = new ResourceVisitor(name);
-		if (resourceHashMissing(sortedGlobalReourcesHashCodes, resourceVisitor.getName())) {
+		if (resourceHashMissing(sortedGlobalReourcesHashCodes, name)) {
 			if (log.isDebugEnabled()) {
             	log.debug("Resource " + name + " not found in the global cache of resources hash codes");
             }

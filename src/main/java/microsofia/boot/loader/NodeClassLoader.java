@@ -51,7 +51,7 @@ public class NodeClassLoader extends ClassLoader implements INode{
 	//the parent classloader of the node
 	private final BootClassLoader bootClassLoader;
 
-	//the uinque node id
+	//the unique node id
 	private Long nodeClassLoaderId;
 	
 	//the Aether DependencyNode that corresponds to the current node
@@ -206,7 +206,8 @@ public class NodeClassLoader extends ClassLoader implements INode{
 	}
 
 	/**
-	 * Loading the class consist of first checking in the parent, and if not found looking in graph following the dependencies.
+	 * Loading the class consists of first checking in the parent, and if not found traversing the graph 
+	 * starting by the current node and following its dependencies.
 	 * */
 	@Override
 	protected Class<?> loadClass(String name, boolean resolve) throws ClassNotFoundException {
@@ -363,15 +364,14 @@ public class NodeClassLoader extends ClassLoader implements INode{
 	 * */
 	@Override
 	protected URL findResource(String name) {			
-		URL url = null;
-		ResourceVisitor resourceVisitor = new ResourceVisitor(name);
-		if (BootClassLoader.resourceHashMissing(this.bootClassLoader.sortedGlobalReourcesHashCodes, resourceVisitor.getName())) {
+		if (BootClassLoader.resourceHashMissing(this.bootClassLoader.sortedGlobalReourcesHashCodes, name)) {
 			if (log.isDebugEnabled()) {
             	log.debug("Resource " + name + " not found in the global cache of resources hash codes");
             }
 			return null;
 		}
-		url = traverse(resourceVisitor);
+		ResourceVisitor resourceVisitor = new ResourceVisitor(name);
+		URL url = traverse(resourceVisitor);
 		if (url == null) {
 			try {
 				url = findResource(resourceVisitor);
