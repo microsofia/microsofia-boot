@@ -3,14 +3,10 @@ package microsofia.boot.loader.visitor;
 import java.net.URL;
 import java.util.List;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
-
 /**
  * Visitor which aim is to search for all the URLs given a resource name
  * */
 public class ResourcesVisitor extends AbstractVisitor<URL> {
-	private static Log log		= LogFactory.getLog(ResourcesVisitor.class.getName());
 	private String name;
 	private List<URL> urls;
 
@@ -33,22 +29,8 @@ public class ResourcesVisitor extends AbstractVisitor<URL> {
 					}
 				}
 			}
-			if (log.isDebugEnabled()) {
-				String strUrls = "";
-				if (foundUrls != null) {
-					for (int i=0;i<foundUrls.size();i++) {
-						strUrls += foundUrls.get(i).toString();
-						if (i < foundUrls.size()-1) {
-							strUrls += ", ";
-						}
-					}
-				}
-				log.debug("Resources of " + name + (foundUrls == null ? " not" : "") + " found in " + node+ (foundUrls == null ? "" : " ( " + strUrls + " )"));
-			}
 		} catch (Exception ex) {
-			if (log.isDebugEnabled()) {
-				log.debug("Error while loading resource " + name + " in " + node, ex);
-			}
+			throw new RuntimeException(ex.getMessage(), ex);
 		}
 		return null;
 	}

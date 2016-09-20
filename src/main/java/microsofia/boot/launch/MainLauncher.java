@@ -37,6 +37,7 @@ public class MainLauncher extends AbstractLauncher{
 		DependencyResult result=resolve();
 		
 		ClassLoader classLoader=new ClassLoaderBuilder().setParentClassLoader(MainLauncher.class.getClassLoader()).setRootNode(result.getRoot()).create();
+		Thread.currentThread().setContextClassLoader(classLoader);
 		Class<?> cl=classLoader.loadClass(mainClass);
 		
 		Method mainWithDom=null;
