@@ -44,7 +44,7 @@ public class Main {
 		options.addOption("h","help", false, "Prints this help");
 		
 		CommandLineParser parser=new DefaultParser();
-		CommandLine cmd=parser.parse(options, args);
+		CommandLine cmd=parser.parse(options, args,true);
 		
 		if (cmd.hasOption("help")){
 			HelpFormatter helpFormatter=new HelpFormatter();
@@ -75,6 +75,7 @@ public class Main {
 	
 						
 			MainLauncher launcher=new MainLauncher();
+			launcher.setArgs(args);
 			launcher.setMainClass(mainClass);
 			if (settingsFile!=null){
 				launcher.setSettingsFile(new File(settingsFile));
