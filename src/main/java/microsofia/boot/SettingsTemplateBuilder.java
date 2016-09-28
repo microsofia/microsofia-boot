@@ -6,6 +6,9 @@ import microsofia.boot.config.ProxyConfig;
 import microsofia.boot.config.RepositoryConfig;
 import microsofia.boot.config.Settings;
 
+/**
+ * Generates a settings template using POJO configuration.
+ * */
 public class SettingsTemplateBuilder {
 
 	public static Settings createSettings(){

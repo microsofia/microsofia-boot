@@ -72,7 +72,6 @@ public class Main {
 			if (mainClass==null){
 				throw new IllegalArgumentException("Missing required option: class");
 			}
-	
 						
 			MainLauncher launcher=new MainLauncher();
 			launcher.setArgs(args);
