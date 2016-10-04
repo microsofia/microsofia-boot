@@ -1,9 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
-  <groupId>microsofia</groupId>
+  <groupId>com.github.microsofia</groupId>
   <artifactId>microsofia-boot</artifactId>
+  <name>microsofia-boot</name>
   <version>1.0</version>
+  <description>Simple ClassLoader based on Eclipse Aether</description>
+  <url>https://github.com/microsofia/microsofia-boot</url>
+  <developers>
+    <developer>
+      <name>chacha</name>
+      <email>chachaparis@gmail.com</email>
+      <organization>charb</organization>
+      <organizationUrl>https://github.com/charb</organizationUrl>
+    </developer>
+  </developers>
+  <licenses>
+    <license>
+      <name>Apache 2.0</name>
+      <url>https://github.com/microsofia/microsofia-boot/blob/master/LICENSE</url>
+    </license>
+  </licenses>
+  <scm>
+    <connection>scm:git:git@github.com:microsofia/microsofia-boot.git</connection>
+    <developerConnection>scm:git:git@github.com:microsofia/microsofia-boot.git</developerConnection>
+    <url>https://github.com/microsofia/microsofia-boot.git</url>
+  </scm>
   <build>
     <plugins>
       <plugin>
@@ -68,6 +90,43 @@
               <Main-Class>microsofia.boot.Main</Main-Class>
             </manifestEntries>
           </archive>
+        </configuration>
+      </plugin>
+      <plugin>
+        <artifactId>maven-gpg-plugin</artifactId>
+        <executions>
+          <execution>
+            <id>sign-artifacts</id>
+            <phase>verify</phase>
+            <goals>
+              <goal>sign</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
+        <artifactId>maven-source-plugin</artifactId>
+        <executions>
+          <execution>
+            <id>attach-sources</id>
+            <goals>
+              <goal>jar</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
+        <artifactId>maven-javadoc-plugin</artifactId>
+        <executions>
+          <execution>
+            <id>attach-javadocs</id>
+            <goals>
+              <goal>jar</goal>
+            </goals>
+          </execution>
+        </executions>
+        <configuration>
+          <additionalparam>-Xdoclint:none</additionalparam>
         </configuration>
       </plugin>
     </plugins>
