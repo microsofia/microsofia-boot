@@ -83,7 +83,7 @@
           <descriptors>
             <descriptor>src/assembly/bin.xml</descriptor>
           </descriptors>
-          <finalName>microsofia-boot</finalName>
+          <finalName>microsofia-boot-${version}</finalName>
           <appendAssemblyId>false</appendAssemblyId>
           <archive>
             <manifestEntries>
