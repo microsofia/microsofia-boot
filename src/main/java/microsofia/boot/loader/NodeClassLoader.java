@@ -491,10 +491,10 @@ public class NodeClassLoader extends ClassLoader implements INode{
 		Iterator<String> entriesIter = resource.getAllEntries();
 		while (entriesIter.hasNext()) {
 			String entry = entriesIter.next();
-			String fileName = null;
 			int slashIndex = entry.lastIndexOf('/');
-			fileName = entry.substring(slashIndex > 0 ? slashIndex + 1 : 0);
-			if (fileName.startsWith(libname + osNameArch) ||
+			String fileName = entry.substring(slashIndex > 0 ? slashIndex + 1 : 0);
+			if (fileName.startsWith(libname) ||
+				fileName.startsWith(libname + osNameArch) ||
 				fileName.startsWith("lib" + libname + osNameArch) ||
 				fileName.startsWith(libname + ".") ||
 				fileName.startsWith("lib" + libname + ".")) {
