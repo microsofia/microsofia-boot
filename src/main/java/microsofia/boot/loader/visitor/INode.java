@@ -4,7 +4,7 @@ import java.net.URL;
 import java.util.List;
 
 /**
- * Interface that represents one node classloader which aim is to handle one artifact.
+ * Interface that represents one node classloader which aim is to handle one artifact id.
  * 
  * */
 public interface INode {

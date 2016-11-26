@@ -11,7 +11,6 @@ import java.io.*;
 import java.util.*;
     
 /**
- * 
  * Dependency visitor used to dump on the console the graph of resolved dependencies.
  * */
 public class ConsoleDependencyVisitor implements DependencyVisitor{
